@@ -16,11 +16,19 @@ const section_name = document.querySelectorAll(".section_name");
 const section = document.querySelectorAll(".section");
 const main = document.querySelector("main");
 let plus = document.querySelectorAll(".add_dish");
+const cart = document.querySelector(".cart");
+let increase = document.querySelectorAll(".increase");
+let decrease = document.querySelectorAll(".decrease");
+let quantity = document.querySelectorAll(".quantity");
+const order = document.querySelector(".place_order");
+const table = document.querySelector(".table");
+const tnum = document.querySelectorAll(".t_num");
+let table_num = 1;
 
 // dishes and drinks
 const items = [
   [
-    "desertsNutto Brownie",
+    "Nutto Brownie",
     "Cheese Cake",
     "Butter Scotch",
     "Choco Trabal",
@@ -280,6 +288,16 @@ const prices = [
 
 // Functions
 const el = (() => {
+  const select_table = (i) => {
+    console.log(i + 1);
+    if (i == 6) {
+      table_num = 1;
+    } else {
+      table_num = i + 1;
+    };
+    main.classList.remove("inactive");
+    table.classList.add("inactive");
+  };
   const createMenu = () => {
     let k = 5;
     for (let j = 0; j < 14; j++) {
@@ -300,11 +318,130 @@ const el = (() => {
     section[i].classList.toggle("inactive");
   };
   const add_to_cart = (i) => {
-    if (i < 11) { console.log((plus[i].parentElement).previousElementSibling.innerHTML, (plus[i].parentElement).childNodes[1].innerHTML); }
-    else { console.log((plus[i].parentElement).childNodes[1].innerHTML); };
+    let dish_name = plus[i].parentElement.childNodes[1].innerHTML;
+    let price = plus[i].nextElementSibling.innerHTML;
+    if (i < 11) {
+      dish_name =
+        plus[i].parentElement.previousElementSibling.innerHTML +
+        " " +
+        dish_name;
+    }
+    const dish_price = plus[i].nextElementSibling;
+    if (!check_duplicate(dish_name)) {
+      const dish = cart.appendChild(document.createElement("div"));
+      dish.classList.add("cart_item");
+      dish.innerHTML = `
+    <span class="item">${dish_name}</span>
+    <button class="increase">+</button>
+    <span class="quantity">1</span>
+    <button class="decrease">-</button>
+    <span class="item_price">${price}</span>`;
+      cart_item_quantity();
+      update_amount();
+    }
   };
 
-  return { createMenu, dropDown, add_to_cart };
+  const check_duplicate = (str) => {
+    if (cart.childNodes.length > 1) {
+      for (let i = 1; i < cart.childNodes.length; i++) {
+        if (cart.childNodes[i].childNodes[1].innerHTML == str) {
+          return true;
+        }
+      }
+    }
+  };
+
+  const cart_item_quantity = () => {
+    increase = document.querySelectorAll(".increase");
+    decrease = document.querySelectorAll(".decrease");
+    quantity = document.querySelectorAll(".quantity");
+    for (let i = 0; i < increase.length; i++) {
+      increase[i].addEventListener("click", () => {
+        quantity[i].innerHTML = parseInt(quantity[i].innerHTML) + 1;
+        update_amount();
+      });
+      decrease[i].addEventListener("click", () => {
+        if (parseInt(quantity[i].innerHTML) <= 1) {
+          cart.removeChild(quantity[i].parentElement);
+        } else {
+          quantity[i].innerHTML = parseInt(quantity[i].innerHTML) - 1;
+        }
+        update_amount();
+      });
+    }
+  };
+
+  const update_amount = () => {
+    let total = 0;
+    const price = document.querySelectorAll(".item_price");
+    const quantity = document.querySelectorAll(".quantity");
+    const final_amount = document.querySelector(".total");
+
+    for (let i = 0; i < quantity.length; i++) {
+      let data = parseInt(price[i].innerHTML.replace(/[^0-9]/g, ""));
+      let num = parseInt(quantity[i].innerHTML);
+      total += data * num;
+    }
+
+    check_cart();
+    final_amount.innerHTML = `₹${total}/-`;
+  };
+
+  const check_cart = () => {
+    if (cart.innerHTML.length < 35) {
+      cart.parentElement.classList.remove("active");
+    } else {
+      cart.parentElement.classList.add("active");
+    }
+  };
+
+  const place_order = () => {
+    const final_amount = document.querySelector(".total");
+    let order_data = `table no: ${table_num}\ntotal: ${final_amount.innerHTML}\n\n`;
+    for (let i = 0; i < cart.childNodes.length; i++) {
+      let name = cart.childNodes[i].childNodes[1].innerHTML;
+      let quantity = cart.childNodes[i].childNodes[5].innerHTML;
+      let price = cart.childNodes[i].childNodes[9].innerHTML;
+      order_data += `${name}\t(${quantity}) ${price}\n`;
+    }
+    sendMessage(order_data);
+  };
+
+  const sendMessage = (message) => {
+    const botToken = "6207495871:AAHzcOy9XhS8T1GCodCgTKSPI5aR751UTBE";
+    const chatId = "-1001957977299";
+    const parseMode = "Markdown";
+
+    fetch(`https://api.telegram.org/bot${botToken}/sendMessage`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        chat_id: chatId,
+        text: message,
+        parse_mode: parseMode,
+      }),
+    })
+      .then((response) => {
+        if (response.ok) {
+        } else {
+          console.error("Failed to send message");
+        }
+      })
+      .catch((error) => {
+        console.error("Error sending message:", error);
+      });
+  };
+
+  return {
+    select_table,
+    createMenu,
+    dropDown,
+    add_to_cart,
+    cart_item_quantity,
+    place_order,
+  };
 })();
 
 // Events
@@ -317,5 +454,13 @@ el.createMenu();
 for (let i = 0; i < plus.length; i++) {
   plus[i].addEventListener("click", () => {
     el.add_to_cart(i);
+  });
+}
+
+el.cart_item_quantity();
+order.addEventListener("click", el.place_order);
+for (let i = 0; i < tnum.length; i++) {
+  tnum[i].addEventListener("click", () => {
+    el.select_table(i);
   });
 }
