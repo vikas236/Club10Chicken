@@ -405,6 +405,7 @@ const el = (() => {
       order_data += `${name}\t(${quantity}) ${price}\n`;
     }
     sendMessage(order_data);
+    alert(`order submitted for table ${table_num}`)
   };
 
   const sendMessage = (message) => {
