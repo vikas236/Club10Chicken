@@ -1,0 +1,433 @@
+* {
+  font-family: sans-serif;
+  box-sizing: border-box;
+}
+
+/* @font-face {
+  font-family: "BunjeeShade-regular";
+  src: url("./BungeeShade-Regular.ttf");
+} */
+
+body {
+  margin: 0;
+}
+
+main {
+  height: 1000px;
+  margin: 0;
+  margin-top: 75px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: fit-content;
+  overflow: hidden;
+}
+
+.section {
+  position: relative;
+  transition: 0.4s;
+}
+
+.section.inactive {
+  height: 60px;
+  overflow: hidden;
+}
+
+.fried_chicken {
+  width: 100vw;
+  height: 670px;
+  overflow: hidden;
+  background: #cb7836;
+  position: realtive;
+}
+
+.section_name {
+  cursor: pointer;
+}
+
+.brush_stroke {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  overflow: hidden;
+}
+
+.brush_stroke img {
+  width: 150px;
+  height: 200px;
+  transform: rotate(90deg);
+}
+
+.brush_stroke img:nth-of-type(2) {
+  position: relative;
+  right: 50px;
+}
+
+.section_name>.subtext {
+  width: 100px;
+  position: absolute;
+  right: 0px;
+  top: 30px;
+  color: white;
+  font-size: 14px;
+}
+
+.section_name h2 {
+  height: 30px;
+  margin: 0;
+  font-size: 22px;
+  position: absolute;
+  inset: 0px;
+  z-index: 1;
+  color: white;
+  left: 20px;
+  top: 17px;
+}
+
+.fried_chicken .items {
+  position: absolute;
+  top: 65px;
+  left: 15px;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.fried_chicken .item {
+  width: fit-content;
+  border: 2px solid #231f1e;
+  padding: 3px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.fried_chicken .item:nth-of-type(2) {
+  margin-top: 120px;
+}
+
+.fried_chicken .content {
+  font-size: 16px;
+  font-weight: bold;
+  padding-top: 10px;
+}
+
+.section .dish_content {
+  width: 90vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 5px;
+  color: #231f1e;
+}
+
+.section .dish_content:first-of-type {
+  margin-top: 12px;
+}
+
+.section .dish {
+  padding: 3px;
+  margin-top: -5px;
+}
+
+.fried_chicken .towards {
+  letter-spacing: -1px;
+  position: absolute;
+  right: 35%;
+}
+
+.fried_chicken .add_dish {
+  position: absolute;
+  right: 17%;
+  cursor: pointer;
+}
+
+.fried_chicken .price,
+.chicken_combo .price {
+  background: white;
+  border-radius: 5px;
+  padding: 2px 5px;
+  border: 2px solid #231f1e;
+}
+
+.chicken_combo {
+  height: 605px;
+  position: relative;
+  background: #cb7836;
+}
+
+h2>span:first-of-type,
+h2>span:last-of-type {
+  width: 10px;
+  font-size: 14px;
+  position: relative;
+  top: -10px;
+}
+
+h2>span:last-of-type {
+  position: absolute;
+  top: 10px;
+  left: 105px;
+}
+
+.combos {
+  margin-top: 10px;
+  margin-left: 20px;
+}
+
+.combo {
+  position: relative;
+}
+
+.combo h2 {
+  font-size: 22px;
+  width: 60%;
+}
+
+.combo p {
+  margin-top: -15px;
+  font-size: 13px;
+  width: 60%;
+}
+
+.combo .price {
+  width: fit-content;
+  position: absolute;
+  right: 23px;
+  top: 5px;
+  font-weight: bold;
+}
+
+.combo img {
+  position: absolute;
+  right: 80px;
+  top: 5px;
+}
+
+.combo .offer {
+  position: absolute;
+  top: 35px;
+  right: 15px;
+  font-weight: bolder;
+  font-size: 18px;
+}
+
+.normal {
+  height: 315px;
+  background: #711c17;
+}
+
+.normal h2 {
+  color: #711c17;
+}
+
+.normal .dish_content {
+  width: 100vw;
+  position: relative;
+  top: 10px;
+}
+
+.normal .dish {
+  color: white;
+  margin-left: 20px;
+  font-size: 18px;
+  margin-top: 0px;
+}
+
+.normal .price {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  right: 25px;
+}
+
+.normal .dish_content img {
+  position: absolute;
+  right: 80px;
+  top: 1px;
+}
+
+.quick_bits {
+  height: 485px;
+}
+
+.quick_bits .brush_stroke img:nth-of-type(2) {
+  position: relative;
+  left: -115px;
+}
+
+.milk_shakes {
+  height: 675px;
+}
+
+.milk_shakes .brush_stroke>img:nth-of-type(2) {
+  position: relative;
+  left: -75px;
+}
+
+.large {
+  height: 360px;
+  background: #1A1F22;
+}
+
+.large.inactive {
+  height: 95px;
+}
+
+.large h2 {
+  color: #1A1F22;
+  width: 250px;
+}
+
+.large .brush_stroke {
+  overflow: visible;
+}
+
+.large .brush_stroke>img:nth-of-type(2) {
+  position: relative;
+  left: 15px;
+}
+
+.large .brush_stroke>img:nth-of-type(3) {
+  position: relative;
+  z-index: 1;
+  top: 30px;
+  left: -160px;
+}
+
+.large .brush_stroke>img:nth-of-type(4) {
+  position: relative;
+  top: 30px;
+  left: -150px;
+}
+
+.large .dish_content {
+  width: 100vw;
+  position: relative;
+}
+
+.large .dish_content:nth-of-type(2) {
+  margin-top: 45px;
+  color: black;
+}
+
+.large .dish {
+  color: white;
+  margin-left: 20px;
+  font-size: 18px;
+  margin-top: 0px;
+}
+
+.large .price {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  right: 25px;
+}
+
+.large .dish_content img {
+  position: absolute;
+  right: 80px;
+}
+
+.fried_cgsand {
+  height: 460px;
+}
+
+.fried_cgsand .brush_stroke>img:nth-of-type(4) {
+  left: -125px;
+}
+
+.fried_cgsand .subtext {
+  position: absolute;
+  top: 15px;
+}
+
+.fried_cgburger {
+  height: 355px;
+}
+
+.smoothies,
+.mocktails,
+.thick_shake {
+  background: #F09B1E;
+  height: 450px;
+}
+
+
+.smoothies img:last-of-type,
+.mocktails img:last-of-type,
+.thick_shake img:last-of-type {
+  position: relative;
+  right: 100px;
+}
+
+
+.smoothies .dish_content img,
+.mocktails .dish_content img,
+.thick_shake .dish_content img {
+  position: absolute;
+  right: 80px;
+}
+
+.smoothies h2,
+.mocktails h2,
+.thick_shake h2 {
+  color: #EC1A23;
+}
+
+.mocktails {
+  height: 515px;
+}
+
+.thick_shake {
+  height: 355px;
+}
+
+.coffee,
+.pizza,
+.pasta,
+.nachos,
+.tacos {
+  height: 160px;
+  background: #2E2222;
+}
+
+.coffee h2,
+.pizza h2,
+.pasta h2,
+.nachos h2,
+.tacos h2 {
+  color: #111214;
+}
+
+.coffee .brush_stroke img:last-of-type {
+  position: absolute;
+  left: 10px;
+}
+
+.pizza {
+  height: 355px;
+}
+
+.pizza .brush_stroke img:first-of-type {
+  position: absolute;
+  left: -20px;
+}
+
+.pasta {
+  height: 130px;
+}
+
+.nachos {
+  height: 160px;
+}
+
+.tacos {
+  height: 130px;
+}
+
+footer {
+  width: 100vw;
+  height: fit-content;
+}
