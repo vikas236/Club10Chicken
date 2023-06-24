@@ -14,7 +14,18 @@
         <h1>CLUB CHICKEN</h1>
         <span class="ten">10</span>
     </nav>
-    <main>
+    <div class="table">
+        <h2>PLEASE TAP ON YOUR TABLE NUMBER</h2>
+        <button class="t_num" value="1">1</button>
+        <button class="t_num" value="2">2</button>
+        <button class="t_num" value="3">3</button>
+        <button class="t_num" value="4">4</button>
+        <button class="t_num" value="5">5</button>
+        <button class="t_num" value="6">6</button>
+        <span class="or">or</span>
+        <button class="t_num" value="skip">skip</button>
+    </div>
+    <main class="inactive">
         <div class="fried_chicken section inactive">
             <div class="section_name">
                 <div class="brush_stroke">
@@ -317,14 +328,9 @@
     </main>
     <footer>
         <div class="order">
-            <div class="cart">
-                <span class="item">nutella</span>
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
-                    style="fill: rgba(0, 0, 0, 1);">
-                    <path d="M19 11h-6V5h-2v6H5v2h6v6h2v-6h6z"></path>
-                </svg>
-            </div>
-            <button>CONFIRM ORDER</button>
+            <div class="cart"></div>
+            <span class="total">00/-</span>
+            <button class="place_order">CONFIRM ORDER</button>
         </div>
     </footer>
     <script src="./main.js"></script>
