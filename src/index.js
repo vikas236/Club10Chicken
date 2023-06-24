@@ -15,6 +15,7 @@ import "./images/description.png";
 const section_name = document.querySelectorAll(".section_name");
 const section = document.querySelectorAll(".section");
 const main = document.querySelector("main");
+let plus = document.querySelectorAll(".add_dish");
 
 // dishes and drinks
 const items = [
@@ -288,17 +289,22 @@ const el = (() => {
         dish_content.classList.add("dish_content");
         dish_content.innerHTML = `
       <span class="dish">${items[j][i]}</span>
-      <img src="./images/plus.svg" alt="add to cart">
+      <img src="./images/plus.svg" class="add_dish" alt="add to cart">
       <span class="price">₹${prices[j][i]}</span>`;
       }
       k += 2;
+      plus = document.querySelectorAll(".add_dish");
     }
   };
   const dropDown = (i) => {
     section[i].classList.toggle("inactive");
   };
+  const add_to_cart = (i) => {
+    if (i < 11) { console.log((plus[i].parentElement).previousElementSibling.innerHTML, (plus[i].parentElement).childNodes[1].innerHTML); }
+    else { console.log((plus[i].parentElement).childNodes[1].innerHTML); };
+  };
 
-  return { createMenu, dropDown };
+  return { createMenu, dropDown, add_to_cart };
 })();
 
 // Events
@@ -308,11 +314,8 @@ for (let i = 0; i < section_name.length; i++) {
   });
 }
 el.createMenu();
-
-{
-  /* <div class="dish_content">
-<span class="dish">Nutto Brownie</span>
-<img src="./images/plus.svg" alt="add to cart">
-<span class="price">10/-</span>
-</div> */
+for (let i = 0; i < plus.length; i++) {
+  plus[i].addEventListener("click", () => {
+    el.add_to_cart(i);
+  });
 }
