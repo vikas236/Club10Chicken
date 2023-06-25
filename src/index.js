@@ -290,13 +290,18 @@ const prices = [
 const el = (() => {
   const select_table = (i) => {
     if (i == 6) {
-      table_num = 1;
+      table_num = prompt ("Please enter your name");
+      if (table_num == "") { reset(); return 0; };
+      table_num = table_num.toString();
     } else {
       table_num = i + 1;
+      table_num = parseInt(table_num);
     }
     main.classList.remove("inactive");
     table.classList.add("inactive");
+    console.log(table_num);
   };
+
   const createMenu = () => {
     let k = 5;
     for (let j = 0; j < 14; j++) {
@@ -437,10 +442,14 @@ const el = (() => {
   };
 
   const reset = () => {
-    cart.innerHTML = "";
-    check_cart();
+    close_cart();
     main.classList.add("inactive");
     table.classList.remove("inactive");
+  };
+
+  const close_cart = () => {
+    cart.innerHTML = "";
+    check_cart();
   };
 
   return {
