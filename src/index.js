@@ -290,8 +290,11 @@ const prices = [
 const el = (() => {
   const select_table = (i) => {
     if (i == 6) {
-      table_num = prompt ("Please enter your name");
-      if (table_num == "") { reset(); return 0; };
+      table_num = prompt("Please enter your name");
+      if (table_num == "") {
+        reset();
+        return 0;
+      }
       table_num = table_num.toString();
     } else {
       table_num = i + 1;
@@ -299,7 +302,6 @@ const el = (() => {
     }
     main.classList.remove("inactive");
     table.classList.add("inactive");
-    console.log(table_num);
   };
 
   const createMenu = () => {
@@ -318,9 +320,11 @@ const el = (() => {
       plus = document.querySelectorAll(".add_dish");
     }
   };
+
   const dropDown = (i) => {
     section[i].classList.toggle("inactive");
   };
+
   const add_to_cart = (i) => {
     let dish_name = plus[i].parentElement.childNodes[1].innerHTML;
     let price = plus[i].nextElementSibling.innerHTML;
@@ -329,6 +333,10 @@ const el = (() => {
         plus[i].parentElement.previousElementSibling.innerHTML +
         " " +
         dish_name;
+    }
+    if (i >= 12 && i <= 16) {
+      price = (plus[i].nextElementSibling.nextElementSibling.innerHTML).replace(/[^0-9]/g, "");
+      price = `${price}/-`
     }
     const dish_price = plus[i].nextElementSibling;
     if (!check_duplicate(dish_name)) {
@@ -408,9 +416,8 @@ const el = (() => {
       let price = cart.childNodes[i].childNodes[9].innerHTML;
       order_data += `${name}\t(${quantity}) ${price}\n`;
     }
-    sendMessage(order_data);
+    // sendMessage(order_data);
     alert(`order submitted for table ${table_num}`);
-    alert(`done`);
     reset();
   };
 
@@ -450,6 +457,9 @@ const el = (() => {
   const close_cart = () => {
     cart.innerHTML = "";
     check_cart();
+    for (let i = 0; i < section.length; i++) {
+      section[i].classList.add("inactive");
+    }
   };
 
   return {
