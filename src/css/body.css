@@ -14,7 +14,7 @@ body {
 
 .table {
   width: 100vw;
-  height: fit-content;
+  height: 91vh;
   position: fixed;
   inset: 75px 0px;
   background: #cb7836;
@@ -34,19 +34,29 @@ body {
 }
 
 .table button {
-  width: 20vw;
-  height: 12vh;
+  width: 75px;
+  height: 75px;
   margin-left: 9vw;
   margin-top: 3vh;
   font-size: 24px;
   color: #1A1F22;
 }
 
+.table .or {
+  position: absolute;
+  bottom: 20vh;
+  left: 45%;
+  color: white;
+  font-size: 7vh;
+}
+
 .table button:last-of-type {
   margin-top: 5vh;
   width: 80vw;
   height: 75px;
-  margin-bottom: 5vh;
+  position: absolute;
+  bottom: 25px;
+  left: 10px;
 }
 
 main {
