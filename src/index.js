@@ -401,7 +401,7 @@ const el = (() => {
 
   const place_order = () => {
     const final_amount = document.querySelector(".total");
-    let order_data = `table no: ${table_num}\ntotal: ${final_amount.innerHTML}\n\n`;
+    let order_data = `table no/name: ${table_num}\ntotal: ${final_amount.innerHTML}\n\n`;
     for (let i = 0; i < cart.childNodes.length; i++) {
       let name = cart.childNodes[i].childNodes[1].innerHTML;
       let quantity = cart.childNodes[i].childNodes[5].innerHTML;
