@@ -44,7 +44,7 @@ body {
 
 .table .or {
   position: absolute;
-  bottom: 25vh;
+  bottom: 30vh;
   left: 45%;
   color: white;
   font-size: 4vh;
@@ -55,7 +55,7 @@ body {
   width: 77vw;
   height: 75px;
   position: absolute;
-  bottom: 10vh;
+  bottom: 15vh;
   left: 10px;
 }
 
