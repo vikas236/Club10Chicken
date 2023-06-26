@@ -3,7 +3,7 @@
     bottom: 0px;
     width: 100vw;
     height: 35vh;
-    background: #E0B11C;
+    background: linear-gradient(transparent 0%, transparent 79%, #131719 79%, #131719 80%, white 80%);
     z-index: 2;
     border-radius: 25px 25px 0 0;
     display: flex;
@@ -20,8 +20,8 @@
 }
 
 .order .cart {
-    width: 90vw;
-    height: 25vh;
+    width: 95vw;
+    height: 26vh;
     background: #131719;
     border-radius: 10px;
     color: white;
@@ -39,6 +39,7 @@
     border: none;
     position: relative;
     left: 35px;
+    border: 3px solid #131719;
 }
 
 .cart .cart_item {
@@ -93,11 +94,11 @@
 
 .order .total {
     font-size: 24px;
-    color: #131719;
+    background-color: #131719;
     position: absolute;
     left: 10px;
     bottom: 10px;
-    background: white;
+    color: white;
     padding: 5px;
     border-radius: 5px;
 }

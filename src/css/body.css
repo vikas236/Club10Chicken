@@ -47,15 +47,15 @@ body {
   bottom: 20vh;
   left: 45%;
   color: white;
-  font-size: 7vh;
+  font-size: 4vh;
 }
 
 .table button:last-of-type {
   margin-top: 5vh;
-  width: 80vw;
+  width: 77vw;
   height: 75px;
   position: absolute;
-  bottom: 25px;
+  bottom: 5vh;
   left: 10px;
 }
 
@@ -120,13 +120,13 @@ main.inactive {
   right: 0px;
   top: 30px;
   color: white;
-  font-size: .8em;
+  font-size: .8rem;
 }
 
 .section_name h2 {
   height: 30px;
   margin: 0;
-  font-size: 22px;
+  font-size: 1.3rem;
   position: absolute;
   inset: 0px;
   z-index: 1;

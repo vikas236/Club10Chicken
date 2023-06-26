@@ -335,8 +335,11 @@ const el = (() => {
         dish_name;
     }
     if (i >= 12 && i <= 16) {
-      price = (plus[i].nextElementSibling.nextElementSibling.innerHTML).replace(/[^0-9]/g, "");
-      price = `${price}/-`
+      price = plus[i].nextElementSibling.nextElementSibling.innerHTML.replace(
+        /[^0-9]/g,
+        ""
+      );
+      price = `${price}/-`;
     }
     const dish_price = plus[i].nextElementSibling;
     if (!check_duplicate(dish_name)) {
@@ -345,9 +348,10 @@ const el = (() => {
       dish.innerHTML = `
     <span class="item">${dish_name}</span>
     <button class="increase">+</button>
-    <span class="quantity">1</span>
+    <input class="quantity" min="0">
     <button class="decrease">-</button>
     <span class="item_price">${price}</span>`;
+      dish.childNodes[5].value = 1;
       cart_item_quantity();
       update_amount();
     }
@@ -369,14 +373,14 @@ const el = (() => {
     quantity = document.querySelectorAll(".quantity");
     for (let i = 0; i < increase.length; i++) {
       increase[i].addEventListener("click", () => {
-        quantity[i].innerHTML = parseInt(quantity[i].innerHTML) + 1;
+        quantity[i].value = parseInt(quantity[i].value) + 1;
         update_amount();
       });
       decrease[i].addEventListener("click", () => {
-        if (parseInt(quantity[i].innerHTML) <= 1) {
+        if (parseInt(quantity[i].value) <= 1) {
           cart.removeChild(quantity[i].parentElement);
         } else {
-          quantity[i].innerHTML = parseInt(quantity[i].innerHTML) - 1;
+          quantity[i].value = parseInt(quantity[i].value) - 1;
         }
         update_amount();
       });
@@ -391,7 +395,7 @@ const el = (() => {
 
     for (let i = 0; i < quantity.length; i++) {
       let data = parseInt(price[i].innerHTML.replace(/[^0-9]/g, ""));
-      let num = parseInt(quantity[i].innerHTML);
+      let num = parseInt(quantity[i].value);
       total += data * num;
     }
 
@@ -412,7 +416,7 @@ const el = (() => {
     let order_data = `table no/name: ${table_num}\ntotal: ${final_amount.innerHTML}\n\n`;
     for (let i = 0; i < cart.childNodes.length; i++) {
       let name = cart.childNodes[i].childNodes[1].innerHTML;
-      let quantity = cart.childNodes[i].childNodes[5].innerHTML;
+      let quantity = cart.childNodes[i].childNodes[5].value;
       let price = cart.childNodes[i].childNodes[9].innerHTML;
       order_data += `${name}\t(${quantity}) ${price}\n`;
     }
