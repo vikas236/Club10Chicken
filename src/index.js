@@ -329,10 +329,7 @@ const el = (() => {
     let dish_name = plus[i].parentElement.childNodes[1].innerHTML;
     let price = plus[i].nextElementSibling.innerHTML;
     if (i < 11) {
-      dish_name =
-        plus[i].parentElement.previousElementSibling.innerHTML +
-        " " +
-        dish_name;
+      dish_name = `${plus[i].parentElement.previousElementSibling.innerHTML} ${dish_name}`;
     }
     if (i >= 12 && i <= 16) {
       price = plus[i].nextElementSibling.nextElementSibling.innerHTML.replace(
@@ -394,8 +391,8 @@ const el = (() => {
     const final_amount = document.querySelector(".total");
 
     for (let i = 0; i < quantity.length; i++) {
-      let data = parseInt(price[i].innerHTML.replace(/[^0-9]/g, ""));
-      let num = parseInt(quantity[i].value);
+      const data = parseInt(price[i].innerHTML.replace(/[^0-9]/g, ""));
+      const num = parseInt(quantity[i].value);
       total += data * num;
     }
 
@@ -415,9 +412,9 @@ const el = (() => {
     const final_amount = document.querySelector(".total");
     let order_data = `table no/name: ${table_num}\ntotal: ${final_amount.innerHTML}\n\n`;
     for (let i = 0; i < cart.childNodes.length; i++) {
-      let name = cart.childNodes[i].childNodes[1].innerHTML;
-      let quantity = cart.childNodes[i].childNodes[5].value;
-      let price = cart.childNodes[i].childNodes[9].innerHTML;
+      const name = cart.childNodes[i].childNodes[1].innerHTML;
+      const quantity = cart.childNodes[i].childNodes[5].value;
+      const price = cart.childNodes[i].childNodes[9].innerHTML;
       order_data += `${name}\t(${quantity}) ${price}\n`;
     }
     sendMessage(order_data);
