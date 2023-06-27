@@ -12,7 +12,7 @@
     justify-content: space-around;
     transition: .3s;
     overflow: hidden;
-    transform: translateY(300px);
+    transform: translateY(350px);
 }
 
 .order.active {
@@ -29,7 +29,7 @@
     overflow: scroll;
 }
 
-.order > button {
+.order>button {
     width: 60vw;
     height: 40px;
     color: #131719;
@@ -97,8 +97,52 @@
     background-color: #131719;
     position: absolute;
     left: 10px;
-    bottom: 10px;
+    bottom: 5px;
     color: white;
     padding: 5px;
     border-radius: 5px;
+}
+
+.footer {
+    width: 100vw;
+    height: 250px;
+    background: #131719;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer ul {
+    transform: translate(-15%, -15%);
+    margin-top: 30px;
+}
+
+.footer li {
+    list-style: none;
+    margin-top: 25px;
+    text-align: center;
+}
+
+.footer a {
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 28px;
+}
+
+.footer hr {
+    width: 75vw;
+    height: 2px;
+    color: white;
+}
+
+.footer hr:first-of-type {
+    position: relative;
+    top: 25px;
+}
+
+.footer hr:last-of-type {
+    position: relative;
+    bottom: 25px;
 }

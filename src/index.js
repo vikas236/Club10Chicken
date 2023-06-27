@@ -329,7 +329,8 @@ const el = (() => {
     let dish_name = plus[i].parentElement.childNodes[1].innerHTML;
     let price = plus[i].nextElementSibling.innerHTML;
     if (i < 11) {
-      dish_name = `${plus[i].parentElement.previousElementSibling.innerHTML} ${dish_name}`;
+      dish_name = `${plus[i].parentElement.parentElement.childNodes[1].innerHTML} ${dish_name}`;
+      console.log(plus[i].parentElement.parentElement.childNodes[1].innerHTML, dish_name);
     }
     if (i >= 12 && i <= 16) {
       price = plus[i].nextElementSibling.nextElementSibling.innerHTML.replace(
@@ -355,8 +356,8 @@ const el = (() => {
   };
 
   const check_duplicate = (str) => {
-    if (cart.childNodes.length > 1) {
-      for (let i = 1; i < cart.childNodes.length; i++) {
+    if (cart.childNodes.length > 0) {
+      for (let i = 0; i < cart.childNodes.length; i++) {
         if (cart.childNodes[i].childNodes[1].innerHTML == str) {
           return true;
         }
@@ -417,8 +418,8 @@ const el = (() => {
       const price = cart.childNodes[i].childNodes[9].innerHTML;
       order_data += `${name}\t(${quantity}) ${price}\n`;
     }
-    sendMessage(order_data);
-    alert(`order submitted for table/name ${table_num}`);
+    // sendMessage(order_data);
+    alert(`order submitted for table/name: ${table_num}`);
     reset();
   };
 
