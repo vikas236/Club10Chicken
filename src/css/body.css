@@ -11,6 +11,7 @@
 
 body {
   margin: 0;
+  background: #cb7836;
 }
 
 .table {
@@ -69,6 +70,7 @@ main {
   justify-content: space-between;
   height: fit-content;
   overflow: hidden;
+  transition: 0.6s ease;
 }
 
 main.inactive {

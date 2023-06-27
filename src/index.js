@@ -25,6 +25,7 @@ const table = document.querySelector(".table");
 const tnum = document.querySelectorAll(".t_num");
 let table_num = 1;
 
+
 // dishes and drinks
 const items = [
   [
@@ -325,12 +326,33 @@ const el = (() => {
     section[i].classList.toggle("inactive");
   };
 
+  const scroll = () => {
+    var prevScrollPos = window.scrollY;
+
+    window.onscroll = function () {
+      var currentScrollPos = window.scrollY;
+
+      if (prevScrollPos > currentScrollPos) {
+        document.querySelector("nav").style.top = "0";
+        main.style.marginTop = "75px";
+      } else {
+        document.querySelector("nav").style.top = "-100px";
+        main.style.marginTop = "35px";
+      }
+
+      prevScrollPos = currentScrollPos;
+    };
+  };
+
   const add_to_cart = (i) => {
     let dish_name = plus[i].parentElement.childNodes[1].innerHTML;
     let price = plus[i].nextElementSibling.innerHTML;
     if (i < 11) {
       dish_name = `${plus[i].parentElement.parentElement.childNodes[1].innerHTML} ${dish_name}`;
-      console.log(plus[i].parentElement.parentElement.childNodes[1].innerHTML, dish_name);
+      console.log(
+        plus[i].parentElement.parentElement.childNodes[1].innerHTML,
+        dish_name
+      );
     }
     if (i >= 12 && i <= 16) {
       price = plus[i].nextElementSibling.nextElementSibling.innerHTML.replace(
@@ -471,6 +493,7 @@ const el = (() => {
     add_to_cart,
     cart_item_quantity,
     place_order,
+    scroll,
   };
 })();
 
@@ -494,3 +517,5 @@ for (let i = 0; i < tnum.length; i++) {
     el.select_table(i);
   });
 }
+
+el.scroll();
