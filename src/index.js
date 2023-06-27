@@ -418,7 +418,7 @@ const el = (() => {
       const price = cart.childNodes[i].childNodes[9].innerHTML;
       order_data += `${name}\t(${quantity}) ${price}\n`;
     }
-    // sendMessage(order_data);
+    sendMessage(order_data);
     alert(`order submitted for table/name: ${table_num}`);
     reset();
   };
